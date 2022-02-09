@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 class UsageCalculationServiceTest {
 
-  private UsageCalculationService service;
+  private UsageCalculationService service = new UsageCalculationService();
 
   // initial input [23, 45, 155, 374, 22, 99.99, 100, 101, 115, 209]
   @Test
