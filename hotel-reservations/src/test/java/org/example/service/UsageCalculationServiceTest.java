@@ -20,11 +20,11 @@ class UsageCalculationServiceTest {
     CalculatedUsage usage = service.calculateUsage(rooms);
     //then
     Assertions.assertThat(usage.getPremiumUsage().getUsedRooms()).isEqualTo(3);
-    Assertions.assertThat(usage.getPremiumUsage().getAmount().getValue()).isEqualTo(BigDecimal.valueOf(738));
-    Assertions.assertThat(usage.getPremiumUsage().getAmount().getCurrency().getCurrencyCode()).isEqualTo("EUR");
+    Assertions.assertThat(usage.getPremiumUsage().getEarnedAmount().getValue()).isEqualTo(BigDecimal.valueOf(738));
+    Assertions.assertThat(usage.getPremiumUsage().getEarnedAmount().getCurrency().getCurrencyCode()).isEqualTo("EUR");
     Assertions.assertThat(usage.getEconomyUsage().getUsedRooms()).isEqualTo(3);
-    Assertions.assertThat(usage.getEconomyUsage().getAmount().getValue()).isEqualTo(new BigDecimal("167.99"));
-    Assertions.assertThat(usage.getEconomyUsage().getAmount().getCurrency().getCurrencyCode()).isEqualTo("EUR");
+    Assertions.assertThat(usage.getEconomyUsage().getEarnedAmount().getValue()).isEqualTo(new BigDecimal("167.99"));
+    Assertions.assertThat(usage.getEconomyUsage().getEarnedAmount().getCurrency().getCurrencyCode()).isEqualTo("EUR");
   }
 
   @Test
@@ -35,11 +35,11 @@ class UsageCalculationServiceTest {
     CalculatedUsage usage = service.calculateUsage(rooms);
     //then
     Assertions.assertThat(usage.getPremiumUsage().getUsedRooms()).isEqualTo(6);
-    Assertions.assertThat(usage.getPremiumUsage().getAmount().getValue()).isEqualTo(BigDecimal.valueOf(1054));
-    Assertions.assertThat(usage.getPremiumUsage().getAmount().getCurrency().getCurrencyCode()).isEqualTo("EUR");
+    Assertions.assertThat(usage.getPremiumUsage().getEarnedAmount().getValue()).isEqualTo(BigDecimal.valueOf(1054));
+    Assertions.assertThat(usage.getPremiumUsage().getEarnedAmount().getCurrency().getCurrencyCode()).isEqualTo("EUR");
     Assertions.assertThat(usage.getEconomyUsage().getUsedRooms()).isEqualTo(4);
-    Assertions.assertThat(usage.getEconomyUsage().getAmount().getValue()).isEqualTo(new BigDecimal("189.99"));
-    Assertions.assertThat(usage.getEconomyUsage().getAmount().getCurrency().getCurrencyCode()).isEqualTo("EUR");
+    Assertions.assertThat(usage.getEconomyUsage().getEarnedAmount().getValue()).isEqualTo(new BigDecimal("189.99"));
+    Assertions.assertThat(usage.getEconomyUsage().getEarnedAmount().getCurrency().getCurrencyCode()).isEqualTo("EUR");
   }
 
   @Test
@@ -50,12 +50,12 @@ class UsageCalculationServiceTest {
     CalculatedUsage usage = service.calculateUsage(rooms);
     //then
     Assertions.assertThat(usage.getPremiumUsage().getUsedRooms()).isEqualTo(2);
-    Assertions.assertThat(usage.getPremiumUsage().getAmount().getValue()).isEqualTo(BigDecimal.valueOf(583));
-    Assertions.assertThat(usage.getPremiumUsage().getAmount().getCurrency().getCurrencyCode()).isEqualTo("EUR");
+    Assertions.assertThat(usage.getPremiumUsage().getEarnedAmount().getValue()).isEqualTo(BigDecimal.valueOf(583));
+    Assertions.assertThat(usage.getPremiumUsage().getEarnedAmount().getCurrency().getCurrencyCode()).isEqualTo("EUR");
 
     Assertions.assertThat(usage.getEconomyUsage().getUsedRooms()).isEqualTo(4);
-    Assertions.assertThat(usage.getEconomyUsage().getAmount().getValue()).isEqualTo(new BigDecimal("189.99"));
-    Assertions.assertThat(usage.getEconomyUsage().getAmount().getCurrency().getCurrencyCode()).isEqualTo("EUR");
+    Assertions.assertThat(usage.getEconomyUsage().getEarnedAmount().getValue()).isEqualTo(new BigDecimal("189.99"));
+    Assertions.assertThat(usage.getEconomyUsage().getEarnedAmount().getCurrency().getCurrencyCode()).isEqualTo("EUR");
 
   }
 
@@ -78,13 +78,13 @@ class UsageCalculationServiceTest {
     //● (output) Usage Economy: 1 (EUR 45.99)
 
 //    Assertions.assertThat(usage.getPremiumUsage().getAmount().getValue()).isEqualTo(BigDecimal.valueOf(1153));
-    Assertions.assertThat(usage.getPremiumUsage().getAmount().getValue()).isEqualTo(new BigDecimal("1153.99"));
-    Assertions.assertThat(usage.getPremiumUsage().getAmount().getCurrency().getCurrencyCode()).isEqualTo("EUR");
+    Assertions.assertThat(usage.getPremiumUsage().getEarnedAmount().getValue()).isEqualTo(new BigDecimal("1153.99"));
+    Assertions.assertThat(usage.getPremiumUsage().getEarnedAmount().getCurrency().getCurrencyCode()).isEqualTo("EUR");
     Assertions.assertThat(usage.getEconomyUsage().getUsedRooms()).isEqualTo(1);
     //I guess here is the missing 0.99 from the premium usage, looks a typo in the test data
 //    Assertions.assertThat(usage.getEconomyUsage().getAmount().getValue()).isEqualTo(new BigDecimal("45.99"));
-    Assertions.assertThat(usage.getEconomyUsage().getAmount().getValue()).isEqualTo(BigDecimal.valueOf(45));
-    Assertions.assertThat(usage.getEconomyUsage().getAmount().getCurrency().getCurrencyCode()).isEqualTo("EUR");
+    Assertions.assertThat(usage.getEconomyUsage().getEarnedAmount().getValue()).isEqualTo(BigDecimal.valueOf(45));
+    Assertions.assertThat(usage.getEconomyUsage().getEarnedAmount().getCurrency().getCurrencyCode()).isEqualTo("EUR");
   }
 
 }

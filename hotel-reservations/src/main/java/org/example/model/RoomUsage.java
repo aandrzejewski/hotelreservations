@@ -20,7 +20,7 @@ public class RoomUsage {
     return guests.remove(guests.size() - 1);
   }
 
-  public Money getAmount() {
+  public Money getEarnedAmount() {
     Money amount = new Money(Currency.getInstance("EUR"));
     for (BigDecimal guest : guests) {
       amount = amount.add(guest);
