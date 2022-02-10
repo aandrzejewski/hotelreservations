@@ -2,9 +2,11 @@ package org.example.service;
 
 import org.example.model.AvailableRooms;
 import org.example.model.CalculatedUsage;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
+@Service
 public class UsageCalculationService {
 
   private PotentialGuestPaymentsProvider potentialGuestPaymentsProvider;
