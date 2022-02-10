@@ -10,10 +10,7 @@ import java.util.List;
 @Service
 public class PotentialGuestPaymentsProvider {
 
-  private List<BigDecimal> potentialGuestsPayments =
-      new ArrayList<>(List.of(BigDecimal.valueOf(23), BigDecimal.valueOf(45), BigDecimal.valueOf(155),
-          BigDecimal.valueOf(374), BigDecimal.valueOf(22), new BigDecimal("99.99"), BigDecimal.valueOf(100), BigDecimal.valueOf(101),
-          BigDecimal.valueOf(115), BigDecimal.valueOf(209)));
+  private List<BigDecimal> potentialGuestsPayments = new ArrayList<>();
 
   public void registerPotentialGuestPayments(List<BigDecimal> potentialPayments) {
     potentialGuestsPayments = new ArrayList<>(potentialPayments);

@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/reservations")
+@RequestMapping(ReservationsController.REQUEST_MAPPING)
 @RequiredArgsConstructor
 public class ReservationsController {
+
+  static final String REQUEST_MAPPING = "/reservations";
 
   private final PotentialGuestPaymentsProvider provider;
 

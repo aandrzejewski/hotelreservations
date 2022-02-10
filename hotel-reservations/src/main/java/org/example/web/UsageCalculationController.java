@@ -12,16 +12,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/room-usage")
+@RequestMapping(UsageCalculationController.REQUEST_MAPPING)
 @RequiredArgsConstructor
 public class UsageCalculationController {
+
+  static final String REQUEST_MAPPING = "/room-usage";
+  static final String QUERY_PARAM_PREMIUM_ROOMS = "premiumRooms";
+  static final String QUERY_PARAM_ECONOMY_ROOMS = "economyRooms";
 
   private final UsageMapper mapper;
   private final UsageCalculationService service;
 
   @GetMapping
-  public UsageDto calculateUsage(@RequestParam(name = "premiumRooms") int premiumRooms,
-                                 @RequestParam(name = "economyRooms") int economyRooms) {
+  public UsageDto calculateUsage(@RequestParam(name = QUERY_PARAM_PREMIUM_ROOMS) int premiumRooms,
+                                 @RequestParam(name = QUERY_PARAM_ECONOMY_ROOMS) int economyRooms) {
     final CalculatedUsage calculatedUsage =
         service.calculateUsage(AvailableRooms.builder().premiumRooms(premiumRooms).economyRooms(economyRooms).build());
     return mapper.map(calculatedUsage);
