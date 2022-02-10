@@ -4,25 +4,18 @@ import org.example.model.AvailableRooms;
 import org.example.model.CalculatedUsage;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class UsageCalculationService {
 
-  private List<BigDecimal> potentialGuestsPayments =
-      new ArrayList<>(List.of(BigDecimal.valueOf(23), BigDecimal.valueOf(45), BigDecimal.valueOf(155),
-          BigDecimal.valueOf(374), BigDecimal.valueOf(22), new BigDecimal("99.99"), BigDecimal.valueOf(100), BigDecimal.valueOf(101),
-          BigDecimal.valueOf(115), BigDecimal.valueOf(209)));
+  private PotentialGuestPaymentsProvider potentialGuestPaymentsProvider;
 
-  public UsageCalculationService() {
-    potentialGuestsPayments.sort(BigDecimal::compareTo);
-    potentialGuestsPayments.sort(Collections.reverseOrder());
+  public UsageCalculationService(PotentialGuestPaymentsProvider potentialGuestPaymentsProvider) {
+    this.potentialGuestPaymentsProvider = potentialGuestPaymentsProvider;
   }
 
   public CalculatedUsage calculateUsage(AvailableRooms rooms) {
     CalculatedUsage usage = new CalculatedUsage(rooms);
-    for (BigDecimal guest : potentialGuestsPayments) {
+    for (BigDecimal guest : potentialGuestPaymentsProvider.getSortedPotentialGuestsPayments()) {
       if (pays100OrMore(guest)) {
         if (usage.hasFreePremiumRoom()) {
           usage.giveGuestPremiumRoom(guest);

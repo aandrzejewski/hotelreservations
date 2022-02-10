@@ -3,13 +3,26 @@ package org.example.service;
 import org.assertj.core.api.Assertions;
 import org.example.model.AvailableRooms;
 import org.example.model.CalculatedUsage;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 class UsageCalculationServiceTest {
 
-  private UsageCalculationService service = new UsageCalculationService();
+  private final List<BigDecimal> testData = List.of(BigDecimal.valueOf(23), BigDecimal.valueOf(45), BigDecimal.valueOf(155),
+      BigDecimal.valueOf(374), BigDecimal.valueOf(22), new BigDecimal("99.99"), BigDecimal.valueOf(100), BigDecimal.valueOf(101),
+      BigDecimal.valueOf(115), BigDecimal.valueOf(209));
+
+  private UsageCalculationService service;
+
+  @BeforeEach
+  void setUp() {
+    PotentialGuestPaymentsProvider provider = new PotentialGuestPaymentsProvider();
+    provider.registerPotentialGuestPayments(testData);
+    service = new UsageCalculationService(provider);
+  }
 
   // initial input [23, 45, 155, 374, 22, 99.99, 100, 101, 115, 209]
   @Test
